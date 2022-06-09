@@ -1,0 +1,39 @@
+{
+  "name": "prisma-layer",
+  "version": "1.0.0",
+  "scripts": {
+    "build:dev": "pnpm run clean && mkdir ./dist && cp package.json ./dist/package.json && node esbuild.js --watch",
+    "build:prod": "pnpm run clean && mkdir ./dist && cp package.json ./dist/package.json && cp -r prisma ./dist/ && cp prisma/schema.prisma ./dist/ && NODE_ENV=${NODE_ENV:-production} node esbuild.js",
+    "clean": "rm -rf dist/",
+    "test": "jest",
+    "generate": "prisma generate",
+    "db:push": "prisma db push",
+    "migrate": "prisma migrate dev",
+    "postinstall": "prisma generate"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.14.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.5.1",
+    "@types/node": "^17.0.35",
+    "@typescript-eslint/eslint-plugin": "^5.22.0",
+    "@typescript-eslint/parser": "^5.22.0",
+    "esbuild": "^0.14.39",
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-jest": "^26.2.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "jest": "^28.1.0",
+    "prettier": "^2.0.5",
+    "prisma": "^3.14.0",
+    "ts-jest": "^28.0.2",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.6.4"
+  }
+}

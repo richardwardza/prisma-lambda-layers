@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "esnext",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "./dist/",    
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declaration": true,
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "preserveSymlinks": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@shared/*": [
+        "../../shared/*",
+      ]
+    }
+  },
+  "include": [
+    "src/**/*"
+  ]
+}

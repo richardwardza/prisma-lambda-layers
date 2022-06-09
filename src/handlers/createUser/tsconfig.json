@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "esnext",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "baseUrl": ".",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declaration": true,
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "preserveSymlinks": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "/opt/nodejs/libLayer": [
+        "../../layers/libs/src/libLayer",
+      ],
+      "/opt/nodejs/prismaLayer": [
+        "../../layers/prisma/src/prismaLayer",
+      ],
+      "/opt/nodejs/node_modules/*": [
+        "../../layers/prisma/node_modules/*",
+      ],
+      "@shared/*": [
+        "../../shared/*",
+      ]
+    }
+  },
+  "include": [
+    "src/**/*"
+  ]
+}

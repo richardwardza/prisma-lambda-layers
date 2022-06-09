@@ -1,0 +1,8 @@
+packages:
+  # all packages in subdirs of packages/ and components/
+  - 'src/handlers/**'
+  - 'src/layers/**'
+  - '!src/handlers/**/dist/**'
+  - '!src/layers/**/dist/**'
+  # exclude packages that are inside test directories
+  - '!**/test/**'

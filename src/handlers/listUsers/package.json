@@ -1,0 +1,53 @@
+{
+  "name": "list-users-function",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "nodemon",
+    "build:prod": "pnpm run clean && mkdir ./dist && NODE_ENV=${NODE_ENV:-production} node esbuild.js",
+    "clean": "rm -rf dist/",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.99",
+    "@types/express": "^4.17.13",
+    "@types/jest": "^27.5.1",
+    "@types/node": "^17.0.35",
+    "@typescript-eslint/eslint-plugin": "^5.22.0",
+    "@typescript-eslint/parser": "^5.22.0",
+    "aws-lambda": "^1.0.7",
+    "esbuild": "^0.14.39",
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-jest": "^26.2.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "express": "^4.18.1",
+    "jest": "^28.1.0",
+    "lambda-local": "^2.0.2",
+    "nodemon": "^2.0.16",
+    "prettier": "^2.0.5",
+    "ts-jest": "^28.0.2",
+    "ts-loader": "^9.3.0",
+    "ts-node": "^10.8.1",
+    "tsconfig-paths": "^4.0.0",
+    "typescript": "^4.6.4",
+    "yaml-cfn": "^0.3.1"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "**/*.test.ts",
+      "**/*.spec.ts",
+      ".git",
+      "node_modules"
+    ],
+    "watch": [
+      "src"
+    ],
+    "exec": "node -r tsconfig-paths/register -r ts-node/register ./src/devServer.ts",
+    "ext": "ts, js"
+  }
+}

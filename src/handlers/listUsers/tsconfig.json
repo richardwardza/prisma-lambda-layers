@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "esnext",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "/opt/nodejs/index": [
+        "../../layers/libs/src/index",
+      ],
+      "/opt/nodejs/prismaLayer": [
+        "../../layers/prisma/src/prismaLayer",
+      ],
+    }
+  },
+  "include": [
+    "src/**/*"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "user",
+  "version": "1.0.0",
+  "description": "A quick project to test typescript lambdas with layers and specifically a Prisma layer",
+  "scripts": {
+    "install-all": "pnpm -r install",
+    "build": "pnpm -r build:prod && sam build && ./updatePrismaLayer.sh",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "sam deploy"
+  },
+  "author": "Richard Ward <richard@gofwd.co.za>",
+  "license": "ISC"
+}

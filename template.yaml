@@ -1,0 +1,71 @@
+# https://github.com/awslabs/serverless-application-model/blob/develop/versions/2016-10-31.md
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: user-api
+
+Globals:
+  Function:
+    Timeout: 60
+
+Resources:
+  PrismaLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: PrismaLayer
+      ContentUri: src/layers/prisma/dist/
+      CompatibleRuntimes:
+        - nodejs14.x
+      RetentionPolicy: Retain
+    Metadata:
+      BuildMethod: nodejs14.x
+
+  LibsLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: LibsLayer
+      ContentUri: src/layers/libs/dist/
+      CompatibleRuntimes:
+        - nodejs14.x
+      RetentionPolicy: Retain
+    Metadata:
+      BuildMethod: nodejs14.x
+
+  CreateUserFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: handler.default
+      CodeUri: src/handlers/createUser/dist/
+      Layers:
+        - !Ref PrismaLayer
+        - !Ref LibsLayer
+      Runtime: nodejs14.x
+      Events:
+        Add:
+          Type: Api
+          Properties:
+            Path: /user
+            Method: post
+      Environment:
+        Variables:
+          DATABASE_URL: postgres://USERNAME:PASSWORD@HOSTNAME:5432/DATABASENAME
+          PRISMA_QUERY_ENGINE_LIBRARY: /opt/nodejs/node_modules/.prisma/client/libquery_engine-rhel-openssl-1.0.x.so.node
+
+  ListUsersFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: handler.default
+      CodeUri: src/handlers/listUsers/dist/
+      Layers:
+        - !Ref PrismaLayer
+        - !Ref LibsLayer
+      Runtime: nodejs14.x
+      Events:
+        Sub:
+          Type: Api
+          Properties:
+            Path: /users
+            Method: get
+      Environment:
+        Variables:
+          DATABASE_URL: postgres://USERNAME:PASSWORD@HOSTNAME:5432/DATABASENAME
+          PRISMA_QUERY_ENGINE_LIBRARY: /opt/nodejs/node_modules/.prisma/client/libquery_engine-rhel-openssl-1.0.x.so.node

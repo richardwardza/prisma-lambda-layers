@@ -1,0 +1,31 @@
+env:
+  es2021: true
+  node: true
+  jest: true
+extends:
+  - standard
+  - prettier
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaVersion: 12
+  sourceType: module
+plugins:
+  - '@typescript-eslint'
+  - 'prettier'
+  - 'import'
+ignorePatterns:
+  - 'dist'
+rules:
+  {
+    'arrow-body-style': 'off',
+    'prefer-arrow-callback': 'off',
+    'no-empty-pattern': 0,
+    'no-unused-vars': 'off',
+    'no-mixed-operators': 'error',
+    '@typescript-eslint/no-unused-vars': 'error',
+    'quotes': [2, 'single', { 'avoidEscape': true }],
+    'no-shadow': 'off',
+    'import/no-absolute-path': 'off',
+    '@typescript-eslint/no-shadow': ['error'],
+    'prettier/prettier': 'error',
+  }
