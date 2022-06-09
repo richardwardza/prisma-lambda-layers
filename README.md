@@ -1,3 +1,6 @@
+Not ready yet - trying to assist with debugging https://github.com/prisma/prisma/issues/13672
+
+
 # Introduction
 
 This is a quick project to show how AWS SAM can deploy a Prisma based typescript project using layers.
